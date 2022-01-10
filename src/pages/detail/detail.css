@@ -1,0 +1,381 @@
+*{margin:0;}
+
+.container-detail{
+    display: flex;
+    width: 84%;
+    margin-top: 43px;
+    margin-left: 9%;
+    margin-right: 8%;
+    justify-content: space-between;
+}
+
+
+  .option-header{
+    height: 22px;
+    margin-top: 11px;
+    margin-right: 35px;
+    overflow: hidden;
+  }
+  .text-options-header{
+    color: #B8BECD;
+    text-decoration: none;
+    margin-left: 35px;
+    font-family: 'Nunito sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+  }
+  .text-options-header:hover {
+    color: #202336;
+  }
+  .wrap-massage{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-top: 11px;
+      
+  }
+  .massages{
+      background-color: #FFCD61;
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      margin-left: -10px;
+      margin-top: -7px;
+      z-index: 1;
+    }
+    .icon-image{
+      /* background-image: url(/assets/image/icon5.png); */
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      margin-right: 10px;
+      
+  }
+  .icon-profil{
+      width: 45px;
+      height: 45px;
+      /* background-image: url(/assets/image/img6.png); */
+      background-size: 45px  45px;
+      border-radius: 30px;
+      
+  }
+  .wrap-main-detail{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 83px;
+    margin-left: 10%;
+}
+.wrap-text-detail{
+  display: flex;
+}
+.text-detail{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+.text1-detail{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.wrap-galery-img{
+  display: flex;
+
+  width: 90%;
+}
+.galery-img{
+  width: 610px;
+  height: 520px;
+  
+  background-size: 100% 100%;
+  margin-top: 112px;
+}
+.wrap-detail-vehicle{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  
+}
+.text-name{
+  font-family: "Playfair Display";
+font-style: normal;
+font-weight: 900;
+font-size: 54px;
+color: #042521;
+margin-top: 85px;
+}
+.text-location{
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-size: 40px;
+  color: #042521;
+  margin-top: 5px;
+}
+.text-available{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  align-items: center;
+  color: #087E0D;
+  margin-top: 48px;
+}
+.text-payment{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-size: 24px;
+  align-items: center;
+  color: #9B0A0A;
+  margin-top: 15px;
+  margin-bottom: 19px;
+}
+.text-detail{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-size: 24px;
+  color: #393939;
+  margin-top: 10px;
+}
+.text-price{
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  color: #000000;
+  text-align: right;
+  margin-top: 54px;
+}
+.wrap-prev{
+  display: flex;
+  width: 95%;
+}
+.wrap-img-prev{
+  display: flex;
+  width: 47%;
+}
+.wrap-img-prev1{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-left: 10%;
+}
+.prev{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+.galery-img1{
+  width: 233px;
+  height: 158px;
+  
+  background-size: 100% 100%;
+  margin-left: 30px;
+  margin-top: 25px;
+}
+.galery-img2{
+  width: 233px;
+  height: 158px;
+
+  background-size: 100% 100%;
+  margin-left: 25px;
+  margin-top: 25px;
+  margin-right: 28px;
+}
+
+.display-total{
+  width: max-content;
+  font-family: "Nunito Sans";
+font-style: normal;
+font-weight: 900;
+font-size: 54px;
+color: #000000;
+
+}
+
+.wrap-btn-order{
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+}
+
+
+.btn-like{
+  width: 443px;
+  height: 89px;
+  margin-top: 28px;
+  margin-bottom: 24px ;
+  margin-left: 30px;
+  padding: 23px  23px ;
+  background: #393939;
+  color: #FFCD61;
+  box-shadow: 0px 0px 20px rgba(248, 161, 112, 0.47);
+  border-radius: 10px;
+  font-family: 'Nunito Sans' ;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+
+@media (max-width:768px) {
+  .option-header{
+    margin-left: 10px;
+    display: none;
+  }
+  .wrap-massage{
+    margin-left: 200px;
+  }
+  .icon-profil{
+    margin-left: 10px;
+  }
+  .wrap-main{
+    justify-content: center;
+    text-align: center;
+  }
+  .text{
+    font-size: 22px;
+  }
+  .text1{
+    font-size: 22px;
+  }
+  .wrap-galery-img{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .galery-img{
+    width: 160px;
+    height: 150px;
+    background-size: 160px 150px;
+  }
+  .text-name{
+    font-size: 20px;
+  }
+  .text-location{
+    font-size: 15px;
+    margin-top: 0px;
+  }
+  .text-available{
+    font-size: 10px;
+    margin-top: 0px;
+  }
+  .text-payment{
+    font-size: 10px;
+    margin-top: 0px;
+  }
+  .text-detail{
+    font-size: 12px;
+  }
+  .text-price{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .wrap-img-prev{
+    display: none;
+  }
+  .wrap-img-prev1{
+    padding-left: 0%;
+    margin-top: 20px;
+  }
+  .wrap-prev{
+    justify-content: center;
+    align-items: center;
+  }
+  .wrap-btn-order{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.btn-chat-admin{
+  width: 200px;
+  height: 100px;
+  margin-left: 30px;
+}
+.btn-reservation{
+  width: 200px;
+  height: 100px; 
+}
+.btn-like{
+  width: 200px;
+  height: 100px;
+}
+.wrap-row-footer{
+  display: none;
+}
+
+i{
+  margin-left: 20px;
+}
+}
+
+@media (max-width:1024px) {
+  .btn-total1{
+    font-size: 20px;
+    width:40px
+  }
+  .btn-total{
+    font-size: 20px;
+    width:40px
+  }
+  .display-total{
+    font-size: 25px;
+  }
+  .galery-img{
+    width: 510px;
+    height: 360px;
+    background-size: 100% 100%;
+  }
+  .galery-img1{
+    height: 100px;
+  }
+  .galery-img2{
+    height: 100px;
+  }
+  .text-name{
+    margin-top: 105px;
+    font-size: 25px;
+  }
+  .text-location{
+    margin-top: 0px;
+    font-size: 25px;
+  }
+  .text-available{
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .text-payment{
+    margin-top: 0px;
+    font-size: 15px;
+  }
+  .text-detail{
+    font-size: 20px;
+  }
+  .text-price{
+    font-size: 25px;
+  }
+}

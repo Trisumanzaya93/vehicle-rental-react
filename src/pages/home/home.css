@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+}
+.header {
+  display: flex;
+  width: 90%;
+  margin-top: 43px;
+  margin-left: 5%;
+  margin-right: 5%;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-home {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-header {
+  display: flex;
+  height: 22px;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-options-header {
+  color: #b8becd;
+  text-decoration: none;
+  font-family: "Nunito sans";
+  font-style: normal;
+  font-weight: normal;
+  margin-left: 10px;
+  font-size: 14px;
+}
+.text-options-header:hover {
+  color: #202336;
+}
+.wrap-btn-auth {
+  justify-content: center;
+}
+
+.wrap-section {
+  background: url(/src/assets/img/img4.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 760px;
+  margin-top: 59px;
+}
+.tranparation-black {
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 760px;
+  margin-top: 59px;
+  padding-left: 5%;
+  padding-top: 69px;
+}
+.text1 {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  color: #ffffff;
+}
+.text2 {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 22px;
+  color: #ffffff;
+  margin-top: 74px;
+}
+.line {
+  background-color: #ffffff;
+  width: 32px;
+  height: 2px;
+  margin-top: 18px;
+  margin-bottom: 48px;
+}
+.dropdown {
+  margin-right: 30px;
+}
+.row1 {
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.btn-explore {
+  width: 180px;
+  height: 52px;
+  background: #ffcd61;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  color: #393939;
+}
+
+.text3 {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  color: #000000;
+  margin-top: 82px;
+  margin-bottom: 40px;
+}
+.wrap-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+.row2 {
+  display: flex;
+  margin-left: 120px;
+  margin-top: 35px;
+}
+
+.card2 {
+  background: url(/src/assets/img/img8.png);
+  background-size: cover;
+  width: 204px;
+  height: 307px;
+  margin-top: 55px;
+  border-radius: 6px;
+  margin-bottom: 40px;
+}
+.card3 {
+  background: url(/src/assets/img/img9.png);
+  background-size: cover;
+  width: 204px;
+  height: 307px;
+  margin-top: 55px;
+  border-radius: 6px;
+  margin-bottom: 40px;
+}
+.card4 {
+  background: url(/src/assets/img/img10.png);
+  background-size: cover;
+  width: 204px;
+  height: 307px;
+  margin-top: 55px;
+  border-radius: 6px;
+  margin-bottom: 40px;
+}
+.wraper-stars {
+  display: flex;
+  flex-direction: column;
+}
+.text6 {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #393939;
+}
+.row-testi {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10%;
+}
+
+.img-testimoni {
+  background-image: url("/src/assets/img/img5.png");
+  background-size: 300px 322px;
+  width: 300px;
+  height: 322px;
+  padding-top: 262px;
+}
+.wrap-image-testimoni {
+  background-image: url("/src/assets/img/icon2.png");
+  width: 42px;
+  height: 42px;
+  background-size: 42px 42px;
+  margin-left: 285px;
+  margin-bottom: -20px;
+}
+.wrap-btn-img {
+  width: 142px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 16px 0px 0px 0px;
+  padding-left: 30px;
+  margin-left: 160px;
+  margin-top: 1px;
+}
+.next-image {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #848484;
+  box-sizing: border-box;
+  color: #848484;
+  margin-right: 10px;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+.next-image:hover {
+  border: 2px solid black;
+  color: black;
+}
+.plus-img {
+  background-image: url("/src/assets/img/icon3.png");
+  width: 42px;
+  height: 42px;
+  background-size: 42px 42px;
+  margin-left: -26px;
+  margin-top: -18px;
+}
+
+@media (max-width: 768px) {
+  .option-header {
+    display: none;
+  }
+}

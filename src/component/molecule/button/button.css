@@ -1,0 +1,149 @@
+.btn-login {
+  height: 38px;
+  margin-left: 16px;
+  padding: 8px 46px;
+  background-color: #fff;
+  border: 1px solid #ffcd61;
+  color: black;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.btn-signup {
+  height: 38px;
+  margin-left: 18px;
+  padding: 8px 46px;
+  background-color: #ffcd61;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.btn-explore {
+  width: 180px;
+  height: 52px;
+  background: #ffcd61;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  color: #393939;
+}
+
+.btn-save{
+  width: 232px;
+  height: 79px;
+  margin-top: 28px;
+  margin-bottom: 24px ;
+  color: black;
+  box-shadow: 0px 0px 20px rgba(248, 161, 112, 0.47);
+  border-radius: 10px;
+  font-family: 'Nunito Sans' ;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+}
+.btn-save-color{
+  background: #FFCD61;
+}
+.btn-save-color1{
+  background: #393939;
+}
+.btn-save-color2{
+  background: #CBCBD4;
+}
+
+.btn-total{
+  width: 80px;
+  border-radius: 10px;
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+}
+.btn-total-color{
+  background: rgba(203, 203, 212, 0.2);
+}
+.btn-total-color1{
+  background:#FFCD61;
+}
+.btn-chat-admin{
+  width: 353px;
+  height: 89px;
+  margin-top: 28px;
+  margin-bottom: 24px ;
+  padding: 23px  23px ;
+  box-shadow: 0px 0px 20px rgba(248, 161, 112, 0.47);
+  border-radius: 10px;
+  font-family: 'Nunito Sans' ;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+}
+.btn-chat-admin-color{
+  background: #393939;
+  color: #FFCD61;
+  margin-left: 10px;
+}
+
+.btn-chat-admin-color1{
+  background: #FFCD61;
+  margin-left: 30px;
+ 
+}
+
+.btn-total2{
+  width: 40px;
+  border-radius: 10px;
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+}
+.btn-total-color-reservation{
+  background: rgba(203, 203, 212, 0.2);
+}
+.btn-total-color1-reservation{
+  background:#FFCD61;
+}
+.btn-price{
+  width: 90%;
+  border-radius: 10px;
+  margin-top: 30px;
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+}
+.btn-add-item{
+  width: 553px;
+  height: 69px;
+  margin-top: 28px;
+  margin-bottom: 24px ;
+  
+  box-shadow: 0px 0px 20px rgba(248, 161, 112, 0.47);
+  border-radius: 10px;
+  font-family: 'Nunito Sans' ;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+}
+.btn-add-item-color{
+  background: #393939;
+  color: #FFCD61;
+  margin-left: 10px;
+}
+
+.btn-add-item-color1{
+  background: #FFCD61;
+  margin-left: 30px;
+ 
+}

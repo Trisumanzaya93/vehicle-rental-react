@@ -1,0 +1,11 @@
+.container-search {
+    width: 90%;
+    height: 40px;
+    margin-top: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

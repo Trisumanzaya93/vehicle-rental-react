@@ -1,0 +1,29 @@
+.padding-colomn{
+    padding-top: 78px;
+}
+.text-price-edit {
+  width: 71px;
+  height: 24px;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.input-price-edit {
+  height: 49px;
+  background: #f5f5f6;
+  border-radius: 10px;
+  padding-left: 40px;
+}
+
+.wrap-btn-edit{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 40px;
+  }

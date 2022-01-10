@@ -1,0 +1,38 @@
+*{margin:0}
+.header{
+    display: flex;
+    width: 90%;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+  .option-header{
+    display: flex;
+    height: 22px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .text-options-header{
+    color: #B8BECD;
+    text-decoration: none;
+    font-family: 'Nunito sans';
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 5px;
+    margin-top:12px;
+    font-size: 14px;
+  }
+  .text-options-header:hover {
+    color: #202336;
+  }
+  .icon4{
+    width: 44px; 
+    height: 44px;
+  }
+  .wrap-btn-auth{
+    justify-content: center ;
+    display: flex;
+  }

@@ -1,0 +1,10 @@
+.wrap-card-viewall {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .card-group{
+      margin-right: 20px !important;
+
+  }
