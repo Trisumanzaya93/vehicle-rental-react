@@ -1,0 +1,132 @@
+.galery-img-payment{
+    width: 410px;
+    height: 270px;
+    
+    background-size: 100% 100%;
+    margin-top: 112px;
+    border-radius: 10px;
+  }
+
+  .text-name-payment{
+    font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  color: #042521;
+  margin-top: 100px;
+  }
+  .text-location-payment{
+    font-family: "Playfair Display";
+    font-style: normal;
+    font-size: 25px;
+    color: #042521;
+    margin-top: 5px;
+  }
+  .text-payment-payment{
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-size: 20px;
+    align-items: center;
+    color: #B8BECD;
+    margin-top: 15px;
+    margin-bottom: 19px;
+  }
+
+  .text-booking-payment{
+    font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  color: #042521;
+  margin-top: 20px;
+  }
+
+  .quantity{
+    margin-top: 30px;
+    padding-top: 20px;
+    width: 452px;
+    height: 57px;
+    border: 1px solid #80918E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reservation-date{
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-right: 10%;
+    width: 552px;
+    height: 57px;
+    border: 1px solid #80918E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-quantity{
+    margin-right: 10px;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #393939;
+  }
+  .order-detail{
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-left: 130px;
+    width: 452px;
+    height: 187px;
+    border: 1px solid #80918E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+  }
+  .identify-payment{
+    margin-top: 30px;
+    padding-top: 50px;
+    padding-left: 130px;
+    margin-right: 10%;
+    width: 552px;
+    height: 187px;
+    border: 1px solid #80918E;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+  .wrap-payment-code{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-right: 10%;
+  }
+  .text-payment-code{
+    font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25px;
+  color: #042521;
+  margin-top: 40px;
+  }
+  .text-booking-payment-small{
+    font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 23px;
+  color: #042521;
+  margin-top: 20px;
+  }
+  .code-payment-code{
+    margin-top: 30px;
+    padding-left: 20px;
+    width: 452px;
+    height: 57px;
+    border: 1px solid #80918E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

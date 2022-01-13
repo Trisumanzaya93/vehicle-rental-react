@@ -14,6 +14,8 @@ import Notfound from "./pages/notfound";
 import Forgotpassword from "./pages/forgotpassword";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store";
+import Payment from "./pages/payment";
+import Paymentfinish from "./pages/paymentfinish";
 
 function Main() {
   return (
@@ -32,6 +34,8 @@ function Main() {
           <Route path="/updateVehicle" element={<UpdateVehicle />} />
           <Route path="*" element={<Notfound />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/paymentfinish" element={<Paymentfinish />} />
         </Routes>
     </ReduxProvider>
       </Router>
