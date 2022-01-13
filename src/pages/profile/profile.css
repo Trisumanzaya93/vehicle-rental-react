@@ -206,7 +206,7 @@ input[type='radio']:checked:after {
 }
 .wrap-identify{
   display: flex;
-
+ justify-content: space-between;
   align-items: center;
   width: 100%;
 }
@@ -236,6 +236,16 @@ input[type='radio']:checked:after {
   color: #9F9F9F;
   margin-top: 37px;
   width: 450px;
+  overflow: hidden;
+}
+.text-detail-contact31{
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #9F9F9F;
+  
+  width: 480px;
   overflow: hidden;
 }
 .text-detail-contact1{

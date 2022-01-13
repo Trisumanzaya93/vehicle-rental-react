@@ -155,7 +155,7 @@ export default class Profile extends Component {
             <div className="text-contact">Identify</div>
             <div className="wrap-identify">
               <div className="text-detail-contact3">Display Name:</div>
-              <div className="text-detail-contact3">DD/MM/YY :</div>
+              <div className="text-detail-contact31">DD/MM/YY :</div>
             </div>
             <div className="wrap-identify">
               <input

@@ -3,9 +3,12 @@ import './login.css'
 import img2 from '../../assets/img/img2.png'
 import img3 from '../../assets/img/img3.png'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from "axios";
+import { loginAction } from '../../redux/actions/auth'
+import { useDispatch } from "react-redux";
+
 
 function Login() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const loginHandler = (e) => {
         console.log('disini');
@@ -16,15 +19,23 @@ function Login() {
             password: e.target.password.value,
         };
         console.log(body);
-        const URL = "http://localhost:8000/api/auth/login";
-        axios
-            .post(URL, body)
-            .then((response) => {
-                const token = response.data.data.token;
-                localStorage.setItem("token", JSON.stringify(token));
-                navigate("/", { replace: true });
-            })
-            .catch((err) => console.error(err));
+        // const URL = process.env.REACT_APP_HOST+"/auth/login";
+        // axios
+        //     .post(URL, body)
+        //     .then((response) => {
+        //         const token = response.data.data.token;
+        //         localStorage.setItem("token", JSON.stringify(token));
+        //         navigate("/", { replace: true });
+        //     })
+        //     .catch((err) => console.error(err));
+        dispatch(loginAction(body)).then((result) => {
+            console.log('ini ',result.value.data.data);
+            const data = result.value.data.data
+            localStorage.setItem("token", JSON.stringify(data.token));
+            navigate("/", { replace: true });
+        }).catch((err) => {
+            
+        });
     };
     
         return (
@@ -80,4 +91,18 @@ function Login() {
         )
     }
 
-export default Login;
+    // const mapStateToProps = (state) => {
+    //     return {
+    //       auth: state.auth,
+    //     };
+    //   };
+      
+    //   const mapDispatchToProps = (dispatch) => {
+    //     return {
+    //       loginDispatch: (body) => {
+    //         dispatch(loginAction(body));
+    //       },
+    //     };
+    //   };
+      
+      export default Login;

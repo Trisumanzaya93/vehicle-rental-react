@@ -17,6 +17,8 @@ function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [imageProfile, setImageProfile] = useState("");
   const [popular, setPopular] = useState([]);
+  // const [vehicleid, setVehicleid] = useState([]);
+
 
   // var newpopular = {};
   // for (var i = 0; i < popular.length; ++i)
@@ -28,7 +30,7 @@ function Home() {
   //    newpopular = { ...popular[index] }
   // }
 
-  console.log(popular);
+  
 
   const handleChange = (e) => {
     setIsOpen(!isOpen);
@@ -44,7 +46,8 @@ function Home() {
   const hendlebtnSignUp = () => {
     navigate("/signup");
   };
-
+  
+console.log(imageProfile);
   const checkLogin = () => {
     const getToken = JSON.parse(localStorage.getItem("token"));
     if (getToken) {
@@ -87,7 +90,16 @@ function Home() {
   useEffect(() => {
     checkLogin();
     getHistoryPopular();
+   
+    //  hendleDEtailVehicle ()
   }, [imageProfile]);
+
+
+  //  const hendleDEtailVehicle = (page) => {
+  //   setVehicleid(page)
+  //   console.log(vehicleid);
+      // navigate(`/${page}`);
+    // };
   return (
     <div>
       <Header
@@ -237,7 +249,7 @@ function Home() {
             <ButtonComponent
               type={"explore"}
               text={"Explore"}
-              onClickBtn={hendlebtnLogin}
+              onClickBtn3={hendlebtnLogin}
             />
           </div>
         </div>
@@ -257,6 +269,8 @@ function Home() {
               destination={item.vehiclename}
               city={item.location}
               image={item.photo}
+              page={item.id}
+              // onClickBtn3={hendleDEtailVehicle}
             />
           })
           }
