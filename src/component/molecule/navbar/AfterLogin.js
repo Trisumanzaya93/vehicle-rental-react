@@ -9,9 +9,12 @@ const hendleLogout=()=>{
     navigate("/", { replace: true });
     window.location.reload();
   }
+  const hendlemassage = () =>{
+    navigate("/chatuser", { replace: true });
+  }
   return (
     <div className="d-flex">
-      <div className="icon-image">
+      <div className="icon-image" onClick={hendlemassage}>
         <div className="massages">1</div>
       </div>
       <div className="icon-profil"></div>

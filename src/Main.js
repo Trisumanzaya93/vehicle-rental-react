@@ -16,29 +16,47 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store";
 import Payment from "./pages/payment";
 import Paymentfinish from "./pages/paymentfinish";
+import Chatuser from "./pages/chatuser";
+import Detailchat from "./pages/detailchat";
+import History from "./pages/history";
+import ProtectRoute from "./privateroute";
 
 function Main() {
   return (
-      <Router>
-          <ReduxProvider store={store}>
+    <Router>
+      <ReduxProvider store={store}>
         <Routes>
           {/* <Route path="/nav" element={<Navbar />} /> */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} >
+          </Route>
+          <Route path="/:id" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          
+          <Route
+            path="/reservation"
+            element={
+              <ProtectRoute>
+                <Reservation />
+              </ProtectRoute>
+            }
+          />
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/vehicletype" element={<VehicleType />} />
-          <Route path="/reservation" element={<Reservation />} />
           <Route path="/viewall" element={<ViewAll />} />
           <Route path="/updateVehicle" element={<UpdateVehicle />} />
           <Route path="*" element={<Notfound />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/paymentfinish" element={<Paymentfinish />} />
+          <Route path="/chatuser" element={<Chatuser />} />
+          <Route path="/detailchat" element={<Detailchat />} />
+          <Route path="/history" element={<History />} />
         </Routes>
-    </ReduxProvider>
-      </Router>
+      </ReduxProvider>
+    </Router>
   );
 }
 

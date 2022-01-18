@@ -3,11 +3,19 @@ import React from 'react'
 import img3 from '../../assets/img/img3.png'
 import img2 from '../../assets/img/img2.png'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { signUpAction } from '../../redux/actions/auth'
+import { useDispatch } from "react-redux";
+import {  toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function SignUp() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const notify = () =>  toast.success("SigUp Success", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose : 2000
+            });
     const signUpHandler = (e) => {
         console.log('disini');
         e.preventDefault();
@@ -18,18 +26,32 @@ export default function SignUp() {
             password: e.target.password.value,
         };
         console.log(body);
-        const URL = "http://localhost:8000/api/auth/signup";
-        axios
-            .post(URL, body)
-            .then((response) => {
-                if(response.data.statusCode === 200){
-                    alert("silahkan login")
-                    navigate("/login", { replace: true });
-                }else{
-                    alert(response.data.massage);
-                }
-            })
-            .catch((err) => console.error(err));
+        // const URL = "http://localhost:8000/api/auth/signup";
+        // axios
+        //     .post(URL, body)
+        //     .then((response) => {
+        //         if(response.data.statusCode === 200){
+        //             alert("silahkan login")
+        //             navigate("/login", { replace: true });
+        //         }else{
+        //             alert(response.data.massage);
+        //         }
+        //     })
+        //     .catch((err) => console.error(err));
+        dispatch(signUpAction(body)).then((result) => {
+            console.log('ini ',result.value.data.data);
+            notify()
+            setTimeout(()=> {
+                navigate("/login", { replace: true })
+               }, 3000)
+        ;
+
+        }).catch((err) => {
+            toast.error("Email sudah terdaftar", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose : 2000
+            });
+        });
     };
 
     return (
@@ -43,6 +65,7 @@ export default function SignUp() {
                         <input className="inputLogin" placeholder="Email" name='email' />
                         <input className="inputLogin" placeholder="Password" name='password' type='password' />
                         <button className="button1" type='submit'>Sign Up</button>
+                        <ToastContainer/>
                         <div className='wrap1'>
                             <div className='line1'></div>
                             <h3 className='text3-login'>Or try another way</h3>

@@ -2,24 +2,23 @@ import { ACTION_STRING } from "../actions/actionString";
 import { ActionType } from "redux-promise-middleware";
 
 const initialState = {
-  userData: {
-    token: JSON.parse(localStorage["token"] || null),
-    user: {},
-    photo: "",
-    role: 0,
-  },
+//   userData: {
+//     token: JSON.parse(localStorage["token"] || null),
+//     photo: "",
+//     role: 0,
+//   },
   isPending: false,
   isFulfilled: false,
   isRejected: false,
   err: {},
 };
-const authReducer = (prevState = initialState, action) => {
-  const { authLogin } = ACTION_STRING;
+const authSignUpReducer = (prevState = initialState, action) => {
+  const { authSignUp } = ACTION_STRING;
   const { Pending, Fulfilled, Rejected } = ActionType;
   // membuat logic berdasarkan action
   switch (action.type) {
     // case authLogin + pending:
-    case authLogin.concat("_", Pending):
+    case authSignUp.concat("_", Pending):
       return {
         ...prevState,
         isPending: true,
@@ -28,13 +27,12 @@ const authReducer = (prevState = initialState, action) => {
       };
 
     // case authLogin + fulfilled:
-    case authLogin.concat("_", Fulfilled):
+    case authSignUp.concat("_", Fulfilled):
       const data = action.payload.data;
       console.log('full',data);
       const userData = {
         ...prevState.userData,
         token: data.data.token,
-        user: data.data.user,
       };
       return {
         ...prevState,
@@ -44,7 +42,7 @@ const authReducer = (prevState = initialState, action) => {
       };
 
     // case authLogin + rejected:
-    case authLogin.concat("_", Rejected):
+    case authSignUp.concat("_", Rejected):
       const err = action.payload;
       return {
         ...prevState,
@@ -60,4 +58,4 @@ const authReducer = (prevState = initialState, action) => {
 
 
 
-export default authReducer;
+export default authSignUpReducer;

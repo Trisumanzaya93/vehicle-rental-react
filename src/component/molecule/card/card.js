@@ -1,12 +1,10 @@
 import React from "react";
-
 import "./card.css";
 
-export default function button({destination, city, image}) {
-  
+export default function button({destination, city, image, id, onClickBtn3}) {
   return (
     <div>
-      <div className="card-componen1" style={{ backgroundImage: `url(${image})` }}>
+      <div className="card-componen1"  style={{ backgroundImage: `url(${image})` }}>
         <div className="wrap-text-card-componen">
           <h4 className="text4-componen">{destination}</h4>
           <h4 className="text5-componen">{city}</h4>

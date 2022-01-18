@@ -10,15 +10,20 @@ import CardComponent from "../../component/molecule/card/card";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../component/molecule/footer/footer";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileAction } from "../../redux/actions/user";
 
 function Home() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const allState = useSelector((state) => state);
+  const {userinfo} = allState.getProfile
+
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-  const [imageProfile, setImageProfile] = useState("");
+  const [imageProfile, setImageProfile] = useState(userinfo.image);
   const [popular, setPopular] = useState([]);
   // const [vehicleid, setVehicleid] = useState([]);
-
 
   // var newpopular = {};
   // for (var i = 0; i < popular.length; ++i)
@@ -29,8 +34,6 @@ function Home() {
   // for (let index = 0; index < popular.length; index++) {
   //    newpopular = { ...popular[index] }
   // }
-
-  
 
   const handleChange = (e) => {
     setIsOpen(!isOpen);
@@ -46,29 +49,49 @@ function Home() {
   const hendlebtnSignUp = () => {
     navigate("/signup");
   };
-  
-console.log(imageProfile);
+  const handleDetailVehicle = (id) => {
+    navigate(`/${id}`);
+  };
+
+  console.log(imageProfile);
   const checkLogin = () => {
     const getToken = JSON.parse(localStorage.getItem("token"));
-    if (getToken) {
-      const URL = "http://localhost:8000/api/users/profile";
-      axios
-        .get(URL, {
-          headers: {
-            "x-access-token": getToken,
-          },
-        })
-        .then((response) => {
-          if (response.data.statusCode === 200) {
-            const result = response.data.data[0] ?? {};
-            localStorage.setItem("imageProfile", result.image);
-            setImageProfile(result.image);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    // if (getToken) {
+      console.log('diidi');
+    dispatch(
+      getProfileAction({
+        headers: {
+          "x-access-token": getToken,
+        },
+      })
+    )
+    setImageProfile(userinfo.image)
+    localStorage.setItem("imageProfile", userinfo.image);
+      // .then((result) => {
+      //   console.log("ini ", result.value.data.data);
+      //   const data = result.value.data.data[0];
+      //   setImageProfile(data);
+      // })
+      // .catch((err) => console.log(err));
+
+    //   const URL = "http://localhost:8000/api/users/profile";
+    //   axios
+    //     .get(URL, {
+    //       headers: {
+    //         "x-access-token": getToken,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       if (response.data.statusCode === 200) {
+    //         const result = response.data.data[0] ?? {};
+    //         localStorage.setItem("imageProfile", result.image);
+    //         setImageProfile(result.image);
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // }
   };
 
   const getHistoryPopular = () => {
@@ -89,17 +112,14 @@ console.log(imageProfile);
 
   useEffect(() => {
     checkLogin();
-    getHistoryPopular();
-   
+    // getHistoryPopular();
     //  hendleDEtailVehicle ()
-  }, [imageProfile]);
+  }, []);
 
+  useEffect(() => {
+    getHistoryPopular();
+  }, []);
 
-  //  const hendleDEtailVehicle = (page) => {
-  //   setVehicleid(page)
-  //   console.log(vehicleid);
-      // navigate(`/${page}`);
-    // };
   return (
     <div>
       <Header
@@ -262,18 +282,20 @@ console.log(imageProfile);
           </a>
         </div>
         <div className="wrap-card">
-          { popular.slice( 0 , 4).map((item,key) => { 
-            
-            return <CardComponent
-            key={key}
-              destination={item.vehiclename}
-              city={item.location}
-              image={item.photo}
-              page={item.id}
-              // onClickBtn3={hendleDEtailVehicle}
-            />
-          })
-          }
+          {popular.slice(0, 4).map((item, key) => {
+            return (
+              <div onClick={() => handleDetailVehicle(item.id)}>
+                <CardComponent
+                  key={key}
+                  destination={item.vehiclename}
+                  city={item.location}
+                  image={item.photo}
+                  page={item.id}
+                  id={item.id}
+                />
+              </div>
+            );
+          })}
         </div>
         <div className="wrap-card">
           <div className="col-12">

@@ -5,11 +5,18 @@ import img3 from '../../assets/img/img3.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginAction } from '../../redux/actions/auth'
 import { useDispatch } from "react-redux";
+import {  toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const notify = () =>  toast.success("Login Success", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose : 2000
+            });
+
     const loginHandler = (e) => {
         console.log('disini');
         e.preventDefault();  
@@ -32,9 +39,18 @@ function Login() {
             console.log('ini ',result.value.data.data);
             const data = result.value.data.data
             localStorage.setItem("token", JSON.stringify(data.token));
-            navigate("/", { replace: true });
+            // alert("succes")
+            notify()
+            setTimeout(()=> {
+                navigate("/", { replace: true })
+               }, 3000)
+        ;
+
         }).catch((err) => {
-            
+            toast.error("Email atau Password salah", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose : 2000
+            });
         });
     };
     
@@ -48,6 +64,7 @@ function Login() {
                             <input className="inputLogin" placeholder="email" name="email"  />
                             <input className="inputLogin" placeholder="password"  name="password" type="password" />
                             <button type='submit' className="button1">Login</button>
+                            <ToastContainer />
                             <a href={{}} className='tex2'>Forgot password?</a>
                             <div className='wrap1'>
                                 <div className='line1'></div>

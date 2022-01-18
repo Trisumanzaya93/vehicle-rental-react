@@ -1,0 +1,58 @@
+.wrap-chat {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 40px;
+}
+.input-search-chat {
+  height: 40px;
+  width: 75%;
+  background: rgba(218, 218, 218, 0.27);
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.select-filter-chat {
+  width: 257px;
+  height: 40px;
+  margin-left: 20px;
+  background: rgba(218, 218, 218, 0.27);
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.wrap-chat-user{
+    margin-top: 40px;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.img-chat-user{
+    width: 133px;
+height: 111px;
+
+border-radius: 70px;
+margin-bottom: 10px;
+}
+.chat-detail-user{
+    width: 100%;
+    margin-left: 40px;
+}
+.chat-date{
+font-family: "Poppins";
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 36px;
+color: #9A9A9D;
+text-align: right;
+margin-right: 20px;
+
+margin-bottom: 45px;
+}
+.chat-user{
+    font-family: "Poppins";
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 36px;
+color: #000000;
+}

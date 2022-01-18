@@ -5,7 +5,12 @@ import Footer from "../../component/molecule/footer/footer";
 import axios from "axios";
 import { Pagination } from "react-bootstrap";
 import './viewall.css'
+// import { useNavigate } from "react-router-dom";
 
+// function pindah (id)  {
+//   const navigate= useNavigate
+//   return navigate('login')
+// }
 export default class ViewAll extends Component {
   constructor() {
     super();
@@ -30,6 +35,7 @@ export default class ViewAll extends Component {
         console.error(error);
       });
   }
+  
 
   hendleButtonPagination=(number)=>{
     this.setState({active:number})
@@ -41,6 +47,10 @@ export default class ViewAll extends Component {
 
   render() {
     const { allvehicle,active} = this.state;
+   const handleDetailVehicle = (id) => {
+     console.log("sadad",id);
+      
+    };
     let items = [];
     for (let number = 1; number <= 3; number++) {
       items.push(
@@ -56,6 +66,7 @@ export default class ViewAll extends Component {
             <h1 className="text3">Motor Bike</h1>
           <div className="card-group  col-xl-11 d-flex justify-content-center me-2">.
             {allvehicle.map((item, idx) => (
+              <div onClick={()=> handleDetailVehicle(item.id)}>
               <CardComponent
                 key={idx}
                 destination={item.vehiclename}
@@ -63,6 +74,7 @@ export default class ViewAll extends Component {
                 image={item.photo}
                 className='me-5 col-xl-6 card-viewall'
               />
+              </div>
             ))}
           </div>
           <Pagination>{items}</Pagination>

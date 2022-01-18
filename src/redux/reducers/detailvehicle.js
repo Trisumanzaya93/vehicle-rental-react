@@ -2,24 +2,29 @@ import { ACTION_STRING } from "../actions/actionString";
 import { ActionType } from "redux-promise-middleware";
 
 const initialState = {
-  userData: {
-    token: JSON.parse(localStorage["token"] || null),
-    user: {},
+  datavehicle: {
+    counter: 0,
+    category: "",
+    location: "",
     photo: "",
-    role: 0,
+    price: "",
+    status: "",
+    stock: "",
+    vehiclename: "",
+    isSucces: false,
   },
   isPending: false,
   isFulfilled: false,
   isRejected: false,
   err: {},
 };
-const authReducer = (prevState = initialState, action) => {
-  const { authLogin } = ACTION_STRING;
+const detailVehicleReducer = (prevState = initialState, action) => {
+  const { detailVehicle } = ACTION_STRING;
   const { Pending, Fulfilled, Rejected } = ActionType;
   // membuat logic berdasarkan action
   switch (action.type) {
     // case authLogin + pending:
-    case authLogin.concat("_", Pending):
+    case detailVehicle.concat("_", Pending):
       return {
         ...prevState,
         isPending: true,
@@ -28,23 +33,29 @@ const authReducer = (prevState = initialState, action) => {
       };
 
     // case authLogin + fulfilled:
-    case authLogin.concat("_", Fulfilled):
-      const data = action.payload.data;
-      console.log('full',data);
-      const userData = {
-        ...prevState.userData,
-        token: data.data.token,
-        user: data.data.user,
+    case detailVehicle.concat("_", Fulfilled):
+      const data = action.payload.data.data[0];
+      console.log("full", data);
+      const datavehicle = {
+        ...prevState.datavehicle,
+        // token: data.data.token,
+        category: data.category,
+        location: data.location,
+        photo: data.photo,
+        price: data.price,
+        status: data.status,
+        stock: data.stock,
+        vehiclename: data.vehiclename,
       };
       return {
         ...prevState,
         isPending: false,
         isFulfilled: true,
-        userData,
+        datavehicle,
       };
 
     // case authLogin + rejected:
-    case authLogin.concat("_", Rejected):
+    case detailVehicle.concat("_", Rejected):
       const err = action.payload;
       return {
         ...prevState,
@@ -58,6 +69,4 @@ const authReducer = (prevState = initialState, action) => {
   }
 };
 
-
-
-export default authReducer;
+export default detailVehicleReducer;
