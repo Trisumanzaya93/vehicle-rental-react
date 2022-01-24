@@ -6,7 +6,7 @@ import icon2 from "../../assets/img/icon2.png";
 import Header from "../../component/molecule/navbar/navbar.js";
 import ButtonComponent from "../../component/molecule/button/button";
 import CardComponent from "../../component/molecule/card/card";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../component/molecule/footer/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../../redux/actions/user";
@@ -237,9 +237,9 @@ function Home() {
       <section className="container-home">
         <div className="d-flex justify-content-between">
           <h1 className="text3">Popular in town</h1>
-          <a href="/viewall" style={{ paddingTop: "100px" }}>
+          <Link to={"/viewall"} style={{ paddingTop: "100px" }}>
             view all
-          </a>
+          </Link>
         </div>
         <div className="wrap-card">
           {popular.slice(0, 4).map((item, key) => {

@@ -5,6 +5,7 @@ import ButtonComponent from "../../component/molecule/button/button";
 import Navbar from "../../component/molecule/navbar/navbar";
 import Footer from "../../component/molecule/footer/footer";
 import dayjs from "dayjs";
+import { toast, ToastContainer } from "react-toastify";
 
 export default class Profile extends Component {
   constructor() {
@@ -68,7 +69,7 @@ export default class Profile extends Component {
             phone: result.phone,
             image: result.image,
             displayname: result.displayname,
-            birthday: dayjs(result.birthday).format('DD-MM-YYYY'),
+            birthday: dayjs(result.birthday).format('YYYY-MM-DD'),
             created_at: timeCreated,
             address: result.address,
           });
@@ -98,7 +99,11 @@ export default class Profile extends Component {
     this.setState({ displayname: event.target.value ?? this.state.displayname })
   }
   handleChangeBirthday(event) {
+    console.log(event.target.value);
     this.setState({ birthday: event.target.value ?? this.state.birthday })
+   }
+   handleChangeGender(event){
+    console.log(event.target.value);
    }
    
    handleImageChange = (event) =>{
@@ -149,7 +154,7 @@ export default class Profile extends Component {
     // address: this.state.address
     //  }
     // console.log("mana",this.state.imagePrev);
-    const image = this.state.imagePrev
+    const image = this.state.imageSend
     const body = new FormData();
       body.append("username", this.state.username);
       body.append("email", this.state.email);
@@ -159,26 +164,30 @@ export default class Profile extends Component {
       body.append("address", this.state.address);
       body.append("image", image);
 
-     console.log(body,image);
-    //  const URL = `${process.env.REACT_APP_HOST}/users`;
-    //  const token = JSON.parse(localStorage.getItem("token"));
-    //  console.log(token,formData);
-    //     axios
-    //         .patch(URL,  
-    //           formData, {
-    //           headers: {
-    //             "x-access-token": token,
-    //           }
-    //         })
-    //         .then((response) => {
-    //           console.log(response);
-    //             if(response.data.statusCode === 200){
-    //                 alert("update succes")
-    //             }else{
-    //                 alert(response.data.massage);
-    //             }
-    //         })
-    //         .catch((err) => console.error(err));
+     console.log(body.getAll('username'),image);
+     const URL = `${process.env.REACT_APP_HOST}/users`;
+     const token = JSON.parse(localStorage.getItem("token"));
+     console.log(token);
+        axios
+            .patch(URL,  
+              body, {
+              headers: {
+                "x-access-token": token,
+              }
+            })
+            .then((response) => {
+              console.log(response);
+                if(response.data.statusCode === 200){
+                  toast.success("Email atau Password salah", {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+                }else{
+                  toast.error("update gagal", {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+                }
+            })
+            .catch((err) => console.error(err));
    }
    
 
@@ -238,13 +247,15 @@ export default class Profile extends Component {
             </div>
           </div>
           <div className="contact" >
-            <div className="gender">
-              <div className="wrap-gender">
+            <div className="gender" >
+              <div className="wrap-gender" >
                 <input
                   type="radio"
                   className="input-gander "
                   name="jenis_kelamin"
-                  value="isi_radio1"
+                  value="male"
+                  onChange={this.handleChangeGender}
+                  
                 />
                 <label htmlFor="Male" className="text-gender">
                   Male
@@ -255,6 +266,8 @@ export default class Profile extends Component {
                   type="radio"
                   className="input-gander "
                   name="jenis_kelamin"
+                  value="female"
+                  onChange={this.handleChangeGender}
                 />
                 <label htmlFor="Female" className="text-gender1">
                   Female
@@ -301,13 +314,15 @@ export default class Profile extends Component {
                 name="displayname"
                 onChange={this.handleChangeDisplayName}
               />
+              {!this.state.isDisableEdit ? ( 
               <input
                 className="text-detail-contact2"
                 type="date"
-                placeholder={this.state.birthday}
+                onfocus={this.type='date'}
                 disabled={this.state.isDisableEdit}
                 onChange={this.handleChangeBirthday}
-              />
+              /> ):(<div className="text-detail-contact2">{this.state.birthday}</div>)
+  }
             </div>
             <div className="wraper-btn">
               <ButtonComponent
@@ -316,6 +331,7 @@ export default class Profile extends Component {
                 typeBtn={"submit"}
                 
               />
+              <ToastContainer/>
               <ButtonComponent
                 type={"save btn-save-color1"}
                 text={"Edit Password"}
