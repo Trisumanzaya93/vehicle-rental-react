@@ -3,8 +3,13 @@ import Navbar from "../../component/molecule/navbar/navbar";
 import "./chatuser.css";
 import img6 from "../../assets/img/img5.png"
 import Footer from "../../component/molecule/footer/footer";
+import { useNavigate } from "react-router-dom";
 
 function Chatuser() {
+  const navigate= useNavigate
+  const handlerChatDetail=()=>{
+    navigate("/detailchat")
+  }
   return (
     <div>
       <Navbar />
@@ -27,7 +32,7 @@ function Chatuser() {
             <option value="name">name</option>
           </select>
         </div>
-        <div className="wrap-chat-user">
+        <div className="wrap-chat-user" onClick={handlerChatDetail}>
             <img src={img6} className="img-chat-user" alt=""/>
             <div className="chat-detail-user">
             <div className="d-flex justify-content-between">
@@ -37,7 +42,7 @@ function Chatuser() {
                 <p className="chat-user">Hey, is the vespa still available?</p>
             </div>
         </div>
-        <div className="wrap-chat-user">
+        <div className="wrap-chat-user" onClick={handlerChatDetail}>
             <img src={img6} className="img-chat-user" alt=""/>
             <div className="chat-detail-user">
             <div className="d-flex justify-content-between">
@@ -47,7 +52,7 @@ function Chatuser() {
                 <p className="chat-user">Hey, is the vespa still available?</p>
             </div>
         </div>
-        <div className="wrap-chat-user">
+        <div className="wrap-chat-user" onClick={handlerChatDetail}>
             <img src={img6} className="img-chat-user" alt=""/>
             <div className="chat-detail-user">
             <div className="d-flex justify-content-between">
@@ -57,7 +62,7 @@ function Chatuser() {
                 <p className="chat-user">Hey, is the vespa still available?</p>
             </div>
         </div>
-        <div className="wrap-chat-user">
+        <div className="wrap-chat-user" onClick={handlerChatDetail}>
             <img src={img6} className="img-chat-user" alt=""/>
             <div className="chat-detail-user">
                 <div className="d-flex justify-content-between">
