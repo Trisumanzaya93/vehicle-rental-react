@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function AfterLogin({ image }) {
 const navigate = useNavigate()
 const hendleLogout=()=>{
-    localStorage.removeItem("imageProfile");
     localStorage.removeItem("token");
     navigate("/", { replace: true });
     window.location.reload();

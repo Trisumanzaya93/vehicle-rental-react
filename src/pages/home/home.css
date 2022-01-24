@@ -81,8 +81,16 @@
   margin-top: 18px;
   margin-bottom: 48px;
 }
-.dropdown {
+.dropdown-filter {
   margin-right: 30px;
+  margin-top: 20px;
+  font-size: 17px;
+  width: 170px;
+  height: 50px;
+  padding-left: 15px;
+  background-color: #b8becd ;
+  border-radius: 5px;
+  box-shadow: #202336;
 }
 .row1 {
   display: flex;

@@ -5,6 +5,13 @@ import authSignUpReducer from "./authSignUp"
 import getProfileReducer from "./updateprofile"
 import detailVehicleReducer from "./detailvehicle";
 import setReservationReducer from "./setReservation";
+import createHistoryReducer from "./createHistory";
+import detailHistoryReducer from "./detailhistory";
+import getAllVehicleReducer from "./getallvehicle";
+import setFilterVehicleReducer from "./setfiltervehicle";
+import getPopularReducer from "./getPopular"
+import getVehicleTypeReducer from "./getvehicletype";
+import createVehicleReducer from "./createVehicle";
 
 
 const reducers = combineReducers({
@@ -12,7 +19,14 @@ const reducers = combineReducers({
   signUp : authSignUpReducer,
   getProfile : getProfileReducer,
   detailVehicle : detailVehicleReducer,
-  setReservation: setReservationReducer
+  setReservation: setReservationReducer,
+  createHistory : createHistoryReducer,
+  detailHistory : detailHistoryReducer,
+  getAllVehicle : getAllVehicleReducer,
+  setFilterVehicle : setFilterVehicleReducer,
+  getPopular : getPopularReducer,
+  getVehicleType : getVehicleTypeReducer,
+  createVehicle :createVehicleReducer,
 });
 
 export default reducers;

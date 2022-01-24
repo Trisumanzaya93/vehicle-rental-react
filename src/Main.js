@@ -9,7 +9,7 @@ import SignUp from "./pages/signup";
 import VehicleType from "./pages/vehicletype";
 import Reservation from "./pages/reservation";
 import ViewAll from "./pages/viewall";
-import UpdateVehicle from "./pages/updatevehicle";
+import AddVehicle from "./pages/addvehicle";
 import Notfound from "./pages/notfound";
 import Forgotpassword from "./pages/forgotpassword";
 import { Provider as ReduxProvider } from "react-redux";
@@ -29,7 +29,7 @@ function Main() {
           {/* <Route path="/nav" element={<Navbar />} /> */}
           <Route path="/" element={<Home />} >
           </Route>
-          <Route path="/:id" element={<Detail />} />
+          <Route path="/vehicle/:id" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           
@@ -46,7 +46,7 @@ function Main() {
           <Route path="/detail" element={<Detail />} />
           <Route path="/vehicletype" element={<VehicleType />} />
           <Route path="/viewall" element={<ViewAll />} />
-          <Route path="/updateVehicle" element={<UpdateVehicle />} />
+          <Route path="/addVehicle" element={<AddVehicle />} />
           <Route path="*" element={<Notfound />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
           <Route path="/payment" element={<Payment />} />

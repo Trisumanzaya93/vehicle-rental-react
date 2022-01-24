@@ -26,18 +26,6 @@ export default function SignUp() {
             password: e.target.password.value,
         };
         console.log(body);
-        // const URL = "http://localhost:8000/api/auth/signup";
-        // axios
-        //     .post(URL, body)
-        //     .then((response) => {
-        //         if(response.data.statusCode === 200){
-        //             alert("silahkan login")
-        //             navigate("/login", { replace: true });
-        //         }else{
-        //             alert(response.data.massage);
-        //         }
-        //     })
-        //     .catch((err) => console.error(err));
         dispatch(signUpAction(body)).then((result) => {
             console.log('ini ',result.value.data.data);
             notify()

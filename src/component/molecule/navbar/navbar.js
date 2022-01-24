@@ -4,18 +4,23 @@ import icon4 from "../../../assets/img/icon4.png";
 import BeforeLogin from "./BeforeLogin";
 import AfterLogin from "./AfterLogin";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function Navbar({ onClickBtn, onClickBtn1, image }) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [imageProfile, setImageProfile] = useState(image);
+function Navbar({ onClickBtn, onClickBtn1, image,goto }) {
+
+  const allState = useSelector((state) => state);
+  const {userinfo} = allState.getProfile
+  const imageProfile = image ?? userinfo.image;
+  const getToken = localStorage.getItem("token");
+  const [isLogin, setIsLogin] = useState(getToken !== undefined);
+  console.log(isLogin, imageProfile);
+
   useEffect(() => {
-    const getImageProfile = localStorage.getItem("imageProfile");
-    const getToken = localStorage.getItem("token");
+    console.log("getToken",getToken);
     if (getToken) {
       setIsLogin(true);
     }
-    if (getImageProfile) setImageProfile(getImageProfile);
-  }, [isLogin, imageProfile]);
+  }, [isLogin, getToken]);
   return (
     <div className="header-navbar">
       <img src={icon4} className="icon4" alt="icon4" />
@@ -24,10 +29,10 @@ function Navbar({ onClickBtn, onClickBtn1, image }) {
           <Link className="text-options-navbar" to={"/"}>
           Home
           </Link>
-          <Link className="text-options-navbar" to={"/"}>
+          <Link className="text-options-navbar" to={"/vehicletype"}>
           Vehicle type
           </Link>
-          <Link className="text-options-navbar" to={"/"}>
+          <Link className="text-options-navbar" to={"/history"}>
             History
           </Link>
           <Link className="text-options-navbar" to={"/"}>

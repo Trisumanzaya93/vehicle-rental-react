@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./home.css";
 import icon1 from "../../assets/img/icon1.png";
@@ -9,18 +8,23 @@ import ButtonComponent from "../../component/molecule/button/button";
 import CardComponent from "../../component/molecule/card/card";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../component/molecule/footer/footer";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../../redux/actions/user";
+import { getPopularAction, setFilterVehicle } from "../../redux/actions/vehicle";
+import defaultimg from "../../assets/img/defaultcar.png"
 
 function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const allState = useSelector((state) => state);
-  const {userinfo} = allState.getProfile
+  const { userinfo } = allState.getProfile;
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState({
+    location: '',
+    status: '',
+    type: '',
+    date: '',
+  });
   const [imageProfile, setImageProfile] = useState(userinfo.image);
   const [popular, setPopular] = useState([]);
   // const [vehicleid, setVehicleid] = useState([]);
@@ -35,13 +39,23 @@ function Home() {
   //    newpopular = { ...popular[index] }
   // }
 
-  const handleChange = (e) => {
-    setIsOpen(!isOpen);
-    setStartDate(e);
+  const handleChangeLocation = (event) => {
+    setSelectedFilter({...selectedFilter, location: event.target.value});
   };
-  const handleClick = (e) => {
-    e.preventDefault();
-    setIsOpen(!isOpen);
+  
+  const handleChangeStatus = (event) => {
+    setSelectedFilter({...selectedFilter, status: event.target.value});
+  };
+  const handleChangeType = (event) => {
+    setSelectedFilter({...selectedFilter, type: event.target.value});
+  };
+  const handleChangeDate = (event) => {
+    setSelectedFilter({...selectedFilter, date: event.target.value});
+  };
+  const handlebtnExplore = () => {
+    console.log('selectedFilter',selectedFilter);
+    dispatch(setFilterVehicle(selectedFilter));
+    navigate("/viewall");
   };
   const hendlebtnLogin = () => {
     navigate("/login");
@@ -50,29 +64,36 @@ function Home() {
     navigate("/signup");
   };
   const handleDetailVehicle = (id) => {
-    navigate(`/${id}`);
+    navigate(`/vehicle/${id}`);
   };
+  const handleHistory = (id) => {
+    navigate(`/history`);
+  };
+  const handleAddVehicle=()=>{
+    navigate("/addvehicle")
+  }
 
-  console.log(imageProfile);
+  // console.log(imageProfile);
   const checkLogin = () => {
     const getToken = JSON.parse(localStorage.getItem("token"));
     // if (getToken) {
-      console.log('diidi');
+    console.log("diidi");
     dispatch(
       getProfileAction({
         headers: {
           "x-access-token": getToken,
         },
       })
-    )
-    setImageProfile(userinfo.image)
+    );
+    setImageProfile(userinfo.image);
     localStorage.setItem("imageProfile", userinfo.image);
-      // .then((result) => {
-      //   console.log("ini ", result.value.data.data);
-      //   const data = result.value.data.data[0];
-      //   setImageProfile(data);
-      // })
-      // .catch((err) => console.log(err));
+    console.log("ini dimana", localStorage);
+    // .then((result) => {
+    //   console.log("ini ", result.value.data.data);
+    //   const data = result.value.data.data[0];
+    //   setImageProfile(data);
+    // })
+    // .catch((err) => console.log(err));
 
     //   const URL = "http://localhost:8000/api/users/profile";
     //   axios
@@ -95,26 +116,36 @@ function Home() {
   };
 
   const getHistoryPopular = () => {
-    const URL = "http://localhost:8000/api/history/lampung";
+    dispatch(getPopularAction())
+      .then((result) => {
+        const data = result.value.data.data;
+        // setdetailhistory(data);
+        setPopular(data);
+        console.log('parameter',data);
 
-    axios
-      .get(URL)
-      .then((response) => {
-        if (response.data.statusCode === 200) {
-          const result = response.data.data;
-          setPopular(result);
-        }
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((err) => console.log(err));
+    
+    // const URL = `${process.env.REACT_APP_HOST}/history/lampung`;
+
+    // axios
+    //   .get(URL)
+    //   .then((response) => {
+    //     if (response.data.statusCode === 200) {
+    //       const result = response.data.data;
+    //       setPopular(result);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
   useEffect(() => {
     checkLogin();
     // getHistoryPopular();
     //  hendleDEtailVehicle ()
-  }, []);
+  }, [imageProfile]);
 
   useEffect(() => {
     getHistoryPopular();
@@ -123,6 +154,7 @@ function Home() {
   return (
     <div>
       <Header
+        goto={handleHistory}
         onClickBtn={hendlebtnLogin}
         onClickBtn1={hendlebtnSignUp}
         imageProfile={imageProfile}
@@ -137,139 +169,67 @@ function Home() {
             <h3 className="text2">Vehicle Finder</h3>
             <div className="line"></div>
             <div className="row1">
-              <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{
-                    paddingLeft: "31px",
-                    paddingTop: "21px",
-                    paddingBottom: "21px",
-                    paddingRight: "123px",
-                    borderRadius: "6px",
-                  }}
-                >
-                  Location
-                </button>
-                <div
-                  className="dropdown-menu"
-                  style={{ paddingRight: "123px" }}
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <a className="dropdown-item" href="/">
-                    lampung
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    bandung
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    palembang
-                  </a>
-                </div>
-              </div>
-              <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{
-                    paddingLeft: "31px",
-                    paddingTop: "21px",
-                    paddingBottom: "21px",
-                    paddingRight: "123px",
-                    borderRadius: "6px",
-                  }}
-                >
-                  Type
-                </button>
-                <div
-                  className="dropdown-menu"
-                  style={{ paddingRight: "95px" }}
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <a className="dropdown-item" href="/">
-                    car
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    bicycle
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    motorcycle
-                  </a>
-                </div>
-              </div>
+              <select
+                className="dropdown-filter"
+                onChange={handleChangeLocation} value={selectedFilter.location}
+              >
+              <option value={""} className="dropdown-item">
+                Location
+              </option>
+                <option value={"lampung"} className="dropdown-item">
+                  lampung
+                </option>
+                <option value={"bandung"} className="dropdown-item">
+                  bandung
+                </option>
+                <option value={"palembang"} className="dropdown-item">
+                  palembang
+                </option>
+              </select>
+              <select
+                className="dropdown-filter"
+                onChange={handleChangeType} value={selectedFilter.type}
+              >
+              <option value={""} className="dropdown-item">
+                Type
+              </option>
+                <option value={"car"} className="dropdown-item">
+                  car
+                </option>
+                <option value={"bicycle"} className="dropdown-item">
+                  bicycle
+                </option>
+                <option value={"motorcycle"} className="dropdown-item">
+                  motorcycle
+                </option>
+              </select>
             </div>
             <div className="row1">
-              <div className="dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{
-                    paddingLeft: "31px",
-                    paddingTop: "21px",
-                    paddingBottom: "21px",
-                    paddingRight: "123px",
-                    borderRadius: "6px",
-                  }}
-                >
-                  Payment
-                </button>
-                <div
-                  className="dropdown-menu"
-                  style={{ paddingRight: "123px" }}
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <a className="dropdown-item" href="/">
-                    Cash
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    Transfer
-                  </a>
-                </div>
-              </div>
-              <div>
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{
-                    paddingLeft: "31px",
-                    paddingTop: "21px",
-                    paddingBottom: "21px",
-                    paddingRight: "123px",
-                    borderRadius: "6px",
-                  }}
-                  onClick={handleClick}
-                >
-                  date
-                </button>
-                {isOpen && (
-                  <DatePicker
-                    onSelect={startDate}
-                    onChange={handleChange}
-                    inline
-                  />
-                )}
-              </div>
+              <select
+                className="dropdown-filter"
+                onChange={handleChangeStatus} value={selectedFilter.status}
+              >
+                
+              <option value={""} className="dropdown-item">
+                Status
+                </option>
+                <option value={"available"} className="dropdown-item">
+                  available
+                </option>
+                <option value={"full booked"} className="dropdown-item">
+                  full booked
+                </option>
+              </select>
+              <input
+                className="dropdown-filter"
+                type={"date"}
+                onChange={handleChangeDate} value={selectedFilter.date}
+              />
             </div>
             <ButtonComponent
               type={"explore"}
               text={"Explore"}
-              onClickBtn3={hendlebtnLogin}
+              onClickBtn={handlebtnExplore}
             />
           </div>
         </div>
@@ -283,6 +243,9 @@ function Home() {
         </div>
         <div className="wrap-card">
           {popular.slice(0, 4).map((item, key) => {
+            if(item.photo === null){
+              item.photo = defaultimg
+            }
             return (
               <div onClick={() => handleDetailVehicle(item.id)}>
                 <CardComponent
@@ -305,6 +268,13 @@ function Home() {
               alt=""
             />
           </div>
+        </div>
+        <div className="d-flex justify-content-center mt-5">
+        <ButtonComponent
+              type={"explore"}
+              text={"Add Vehicle"}
+              onClickBtn={handleAddVehicle}
+            />
         </div>
         <div className="row ">
           <h1 className="text3">Testimonial</h1>

@@ -15,6 +15,8 @@ export default class Profile extends Component {
     email: "",
     phone: "",
     image: "",
+    imagePrev :'',
+    imageSend:{},
     displayname: "",
     birthday: "",
     created_at: "",
@@ -33,7 +35,7 @@ export default class Profile extends Component {
 
   
   componentDidMount() {
-    const URL = "http://localhost:8000/api/users/profile";
+    const URL = `${process.env.REACT_APP_HOST}/users/profile`;
     const token = JSON.parse(localStorage.getItem("token"));
     console.log(token);
     axios
@@ -98,83 +100,99 @@ export default class Profile extends Component {
   handleChangeBirthday(event) {
     this.setState({ birthday: event.target.value ?? this.state.birthday })
    }
-
+   
    handleImageChange = (event) =>{
-    event.preventDefault();
 
-    let file = event.target.files[0];
+    event.preventDefault();
     
-      const formData = new FormData();
-      formData.append("image", file);
-    const URL = "http://localhost:8000/api/users";
-    const token = JSON.parse(localStorage.getItem("token"));
-    console.log(token);
-       axios
-           .patch(URL,  
-            formData, {
-             headers: {
-               "x-access-token": token,
-             }
-           })
-           .then((response) => {
-             console.log(response);
-               if(response.data.statusCode === 200){
+    const file = event.target.files[0];
+    const prev = URL.createObjectURL(file)
+    this.setState({imagePrev : prev})
+    this.setState({imageSend : file ?? this.state.image })
+    
+    //   const formData = new FormData();
+    //   formData.append("image", file);
+    // const URL = `${process.env.REACT_APP_HOST}/users`;
+    // const token = JSON.parse(localStorage.getItem("token"));
+    // console.log(token);
+    //    axios
+    //        .patch(URL,  
+    //         formData, {
+    //          headers: {
+    //            "x-access-token": token,
+    //          }
+    //        })
+    //        .then((response) => {
+    //          console.log(response);
+    //            if(response.data.statusCode === 200){
                  
-                    this.setState({
-                      ...response.data.data
-                  });
-                   alert("update succes")
-               }else{
-                   alert(response.data.massage);
-               }
-           })
-           .catch((err) => console.error(err));
+    //                 this.setState({
+    //                   ...response.data.data
+    //               });
+    //                alert("update succes")
+    //            }else{
+    //                alert(response.data.massage);
+    //            }
+    //        })
+    //        .catch((err) => console.error(err));
    }
    
 
    handleSumbitProfile(event) {
     event.preventDefault()
-     const body = {
-      username: this.state.username,
-    email: this.state.email,
-    phone: this.state.phone,
-    displayname: this.state.displayname,
-    birthday: dayjs(this.state.birthday).format('YYYY-MM-DD'),
-    address: this.state.address
-     }
-     console.log(body);
-     const URL = "http://localhost:8000/api/users";
-     const token = JSON.parse(localStorage.getItem("token"));
-     console.log(token);
-        axios
-            .patch(URL,  
-              body, {
-              headers: {
-                "x-access-token": token,
-              }
-            })
-            .then((response) => {
-              console.log(response);
-                if(response.data.statusCode === 200){
-                    alert("update succes")
-                }else{
-                    alert(response.data.massage);
-                }
-            })
-            .catch((err) => console.error(err));
+    //  const body = {
+    //   username: this.state.username,
+    // email: this.state.email,
+    // phone: this.state.phone,
+    // displayname: this.state.displayname,
+    // birthday: dayjs(this.state.birthday).format('YYYY-MM-DD'),
+    // address: this.state.address
+    //  }
+    // console.log("mana",this.state.imagePrev);
+    const image = this.state.imagePrev
+    const body = new FormData();
+      body.append("username", this.state.username);
+      body.append("email", this.state.email);
+      body.append("phone", this.state.phone);
+      body.append("displayname", this.state.displayname);
+      body.append("birthday", this.state.birthday);
+      body.append("address", this.state.address);
+      body.append("image", image);
+
+     console.log(body,image);
+    //  const URL = `${process.env.REACT_APP_HOST}/users`;
+    //  const token = JSON.parse(localStorage.getItem("token"));
+    //  console.log(token,formData);
+    //     axios
+    //         .patch(URL,  
+    //           formData, {
+    //           headers: {
+    //             "x-access-token": token,
+    //           }
+    //         })
+    //         .then((response) => {
+    //           console.log(response);
+    //             if(response.data.statusCode === 200){
+    //                 alert("update succes")
+    //             }else{
+    //                 alert(response.data.massage);
+    //             }
+    //         })
+    //         .catch((err) => console.error(err));
    }
    
 
   render() {
     return (
       <div>
+        <form onSubmit={this.handleSumbitProfile}>
         <Navbar />
         <main className="wrap-main">
           <h1 className="text">Profile</h1>
           <div className="wrap-profil">
             <div
               className="image-profil"
-              style={{ backgroundImage: `url(${this.state.image})` }}
+              style={{ backgroundImage: `url("${this.state.image}")` }}
             >
               <div className="update-image-wrap">
                 {/* <DropdownButton
@@ -203,13 +221,14 @@ export default class Profile extends Component {
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
                   >
+                    <img src={this.state.imagePrev} style={{"width":"200px","height":"200px"}} alt=""/>
                     <input className="dropdown-item" type="file" onChange={(e) => this.handleImageChange(e)} />
                     
                   </div>
                 </div>
               </div>
             </div>
-            <h1 className="text-profil">{this.state.username}</h1>
+            <h1 className="text-profil">{this.state.displayname}</h1>
             <div className="text-detail-profil">
               {this.state.email}
               <br />
@@ -218,7 +237,7 @@ export default class Profile extends Component {
               Has been active since {this.state.created_at}
             </div>
           </div>
-          <form className="contact" onSubmit={this.handleSumbitProfile}>
+          <div className="contact" >
             <div className="gender">
               <div className="wrap-gender">
                 <input
@@ -284,6 +303,7 @@ export default class Profile extends Component {
               />
               <input
                 className="text-detail-contact2"
+                type="date"
                 placeholder={this.state.birthday}
                 disabled={this.state.isDisableEdit}
                 onChange={this.handleChangeBirthday}
@@ -303,9 +323,10 @@ export default class Profile extends Component {
               />
               <ButtonComponent type={"save btn-save-color2"} text={"Cancel"} />
             </div>
-          </form>
+          </div>
         </main>
         <Footer />
+        </form>
       </div>
     );
   }
