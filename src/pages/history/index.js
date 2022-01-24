@@ -9,7 +9,7 @@ import Footer from "../../component/molecule/footer/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailHistoryAction } from "../../redux/actions/history";
 import { getVehicleTypeAction } from "../../redux/actions/vehicle";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import defaultimg from "../../assets/img/defaultcar.png"
 import dayjs from "dayjs";
 
@@ -161,9 +161,9 @@ function History() {
             );
           })}
 
-          <a href="/viewall" className="d-flex justify-content-center ">
+          <Link to={"/viewall"} className="d-flex justify-content-center ">
             View More
-          </a>
+          </Link>
           <div className="d-flex justify-content-center mt-3">
             <img src={icon9} alt="" />
           </div>

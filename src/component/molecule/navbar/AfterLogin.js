@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AfterLogin({ image }) {
 const navigate = useNavigate()
@@ -29,9 +29,9 @@ const hendleLogout=()=>{
       >
       </a>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a className="dropdown-item" href="/profile">
+        <Link to={"/profile"} className="dropdown-item" >
           Profil
-        </a>
+        </Link>
         <button className="dropdown-item" onClick={hendleLogout}>Log out</button>
       </div>
     </div>
