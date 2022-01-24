@@ -6,7 +6,7 @@ import Footer from "../../component/molecule/footer/footer";
 import { useNavigate } from "react-router-dom";
 
 function Chatuser() {
-  const navigate= useNavigate
+  const navigate= useNavigate()
   const handlerChatDetail=()=>{
     navigate("/detailchat")
   }
